@@ -83,7 +83,6 @@ This document serves as a chronological log of the work done on the Custom Linux
 **Next Steps:**
 - Read the LFS handbook
 - Partion the disk and start the LFS build
-- Start practicing c++ with the C++ book
 
 ### Date: [10-11-2023]
 
@@ -123,7 +122,6 @@ Writing superblocks and filesystem accounting information: done
 **Next Steps:**
 - Read the LFS handbook
 - $LFS variable
-- Start practicing c++ with the C++ book
 
 ### Date: [11-11-2023]
 
@@ -150,6 +148,34 @@ Writing superblocks and filesystem accounting information: done
 
 **Next Steps:**
 - Read the LFS handbook
-- Installing the packets and fix patches where needed
-- Start practicing c++ with the C++ book
+- Prepare the environment
+
+### Date: [12-11-2023]
+
+**Today's Goals:**
+- Keep on working on the LFS build
+
+**Tasks Completed:**
+- Creating the directories needed such as /etc, /var, /usr/lib, /usr/bin, /usr/sbin and the soft links for /usr/ directories
+- Created the first user to avoid running only root in the new lfs: username lfs group lfs
+- Some effords to make a clean working environment for the lfs user, no contimination from the host system.
+
+**Problems/Challenges Encountered:**
+-mv -v /etc/bash.bashrc /etc/bash.bashrc.NOUSE   when I am finished with lfs user, I can change this back without the ".NOUSE" part
+
+**Solutions/Workarounds Implemented:**
+- The new user lfs is so that I do not need to run the host root all the time, and possible break my host system
+- The new user will get "root" ownership of the $LFS system by:
+   -  chown -v lfs $LFS/{usr{,/*},lib,var,etc,bin,sbin,tools}
+   -  case $(uname -m) in
+   -  x86_64) chown -v lfs $LFS/lib64 ;;
+   -  esac
+
+**Reflections:**
+- Pages 32-34 good about how the host system can impact .bash_profile, .bashrc and the PATH variable
+
+**Next Steps:**
+- Read the LFS handbook, Part III about the cross toolchain
+- Chapter 5, compile and install the first packages
+
 
