@@ -122,6 +122,34 @@ Writing superblocks and filesystem accounting information: done
 
 **Next Steps:**
 - Read the LFS handbook
-- Partion the disk and start the LFS build
+- $LFS variable
+- Start practicing c++ with the C++ book
+
+### Date: [11-11-2023]
+
+**Today's Goals:**
+- Finish the partition mounting
+- env varibles etc
+- start installing packages
+
+**Tasks Completed:**
+- Partition is correctly mounted
+- Env. variable LFS=/mnt/lfs is set for user and root
+- Download and make ready for installation the packet list from LFS
+
+**Problems/Challenges Encountered:**
+- No issues for now, but will have do fix some pathces when installing
+
+**Solutions/Workarounds Implemented:**
+- Nothing special for task 1 and 2
+- Downloaded the packet list from LFS with wget and then ran the md5sum - all of them passed
+- Changed the owner ship of all the files in $LFS/sources/* to root so that I do not get unnamed UID in the LFS: chown root:root $LFS/sources/*
+
+**Reflections:**
+- Still, straight forward to follow the LFS handbook, takes time just because I want to understand what I am doing.
+
+**Next Steps:**
+- Read the LFS handbook
+- Installing the packets and fix patches where needed
 - Start practicing c++ with the C++ book
 
