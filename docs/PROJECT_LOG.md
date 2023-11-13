@@ -178,4 +178,38 @@ Writing superblocks and filesystem accounting information: done
 - Read the LFS handbook, Part III about the cross toolchain
 - Chapter 5, compile and install the first packages
 
+### Date: [13-11-2023]
 
+**Today's Goals:**
+- Chapter 5 - build the cross-compiler under /mnt/lfs/tools
+- Work a bit on the NIDS structure and architecture
+
+**Tasks Completed:**
+- Created a document with some ideas of detection types for the NIDS, will start with port scanning detection
+- Have created folder structure for NIDS both C++ and Python, plus added .gitignore
+- Configured, compiled and installed the first package for the cross-compiler - binutils
+
+
+**Problems/Challenges Encountered:**
+- Just a learning curve to understand how things are connected at low level: binutils with its linker and assmebler to gcc and glibc
+- Also learning about how cross-compiler vs native compiler work and the use of cross-compilers
+
+**Solutions/Workarounds Implemented:**
+- No work arounds per ce, still following the LFS handbook and no sidesteps so far.
+
+**Reflections:**
+- Someting I would like to note down about the build process
+time { #time the process
+  # Preparing the build by the /configure command from the binutils source which creates the Makefile for compilation
+  ../configure --prefix=$LFS/tools \   #Where to install the package and \ is to break the long command down to next line
+  --with-sysroot=$LFS \ #Set the root directory for the build to the $LFS (Not the actual hostsystem /)
+  --target=$LFS_TGT \  #What the target system is that the build is being created for - the system triplet cpu-vendor-kernel-os e.g. x86_64-pc-linux-gnu 
+  --disable-nls \    #Disables Native Language Support, as it's not needed for temporary tools.
+  --enable-gprofng=no \  #This disables building gprofng which is not needed for the temporary tools.
+  --disable-werror; #Ignore host compiler's errors during the build process.
+  make;  #Compile the package
+  make install; #Install it to $LFS/tools
+}
+
+**Next Steps:**
+- Install cross gcc and glibc - still on pc,pc,lfs that is building cc1 (the cross compiler) with the cc-host-pc
